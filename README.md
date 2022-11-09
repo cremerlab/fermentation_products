@@ -36,7 +36,7 @@ This directory contains all files used to generate the paper website. For most
 purposes, this directory can be ignored. 
 
 ### `figures`
-This directory contains PDF files of all of the figures present in the manuscript
+This directory contains  files of all of the figures present in the manuscript
 as well as the HTML files of the interactive figures.
 
 ## License
