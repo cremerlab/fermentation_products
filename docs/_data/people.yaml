@@ -24,13 +24,13 @@
   institute: Stanford University
   other_info:
     Email Address: jonas.cremer@stanford.edu 
- -author:
+- author:
   name: Richa Sharma
   institute: Stanford Univeristy
--author:
+- author:
   name: Julien Chabbey
   institute: ETH Zurich
- -author:
+- author:
   name: Griffin Chure
   link: "https://gchure.github.io"
   title: NSF Postdoctoral Research Fellow
