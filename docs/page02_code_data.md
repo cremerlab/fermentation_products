@@ -11,7 +11,7 @@ img: seg.png
 All of the code used in the analysis of this work is available on the [GitHub repository associated with this work](https://github.com/cremerlab/flux_parity) along with instructions regarding installation of the custom Python module
 
 ## Data
-All of the data used in the analysis of this work is available on the [GitHub repository associated with this work](https://github.com/cremerlab/flux_parity). Below, we provide links to individual data sets associated with key figures.
+All of the data used in the analysis of this work is available on the [GitHub repository associated with this work](https://github.com/cremerlab/fermentation_products). Below, we provide links to individual data sets associated with key figures.
 
 {% if site.data.datasets %}
 {% for ds in site.data.datasets %}

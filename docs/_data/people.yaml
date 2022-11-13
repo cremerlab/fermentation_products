@@ -17,6 +17,18 @@
   other_info:
     Email Address: markus.arnoldini@hest.ethz.ch
 - author:
+  name: Richa Sharma
+  institute: Stanford Univeristy
+- author:
+  name: Julien Chabbey
+  institute: ETH Zurich
+- author:
+  name: Griffin Chure
+  link: "https://gchure.github.io"
+  title: NSF Postdoctoral Research Fellow
+  img: griffin.png
+  institute: Stanford Univeristy
+- author:
   name: Jonas Cremer
   link: "https://cremerlab.com"
   title: Assistant Professor of Biology
@@ -24,16 +36,4 @@
   institute: Stanford University
   other_info:
     Email Address: jonas.cremer@stanford.edu 
- -author:
-  name: Richa Sharma
-  institute: Stanford Univeristy
--author:
-  name: Julien Chabbey
-  institute: ETH Zurich
- -author:
-  name: Griffin Chure
-  link: "https://gchure.github.io"
-  title: NSF Postdoctoral Research Fellow
-  img: griffin.png
-  institute: Stanford Univeristy
     
