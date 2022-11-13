@@ -17,14 +17,6 @@
   other_info:
     Email Address: markus.arnoldini@hest.ethz.ch
 - author:
-  name: Jonas Cremer
-  link: "https://cremerlab.com"
-  title: Assistant Professor of Biology
-  img: jonas.png
-  institute: Stanford University
-  other_info:
-    Email Address: jonas.cremer@stanford.edu 
-- author:
   name: Richa Sharma
   institute: Stanford Univeristy
 - author:
@@ -36,4 +28,11 @@
   title: NSF Postdoctoral Research Fellow
   img: griffin.png
   institute: Stanford Univeristy
-    
+- author:
+  name: Jonas Cremer
+  link: "https://cremerlab.com"
+  title: Assistant Professor of Biology
+  img: jonas.png
+  institute: Stanford University
+  other_info:
+    Email Address: jonas.cremer@stanford.edu 
