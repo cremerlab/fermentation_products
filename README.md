@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/332829576.svg)](https://zenodo.org/badge/latestdoi/332829576)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # `fermentation_products`
 This repository houses all data and code used in the manuscript "Quantifying the daily fermentation product harvest from the human gut microbiota".
@@ -19,24 +19,17 @@ these data come from other sources. Credit is given as needed either in the
 filename or in the associated notes. 
 
 This directory contains several subdirectories. 
-* **`main_figure_data`**: Contains all data files (as `.csv`'s) used for Figures 
-4 and 5 of the main text.
 
-* **`supplement_figure_data`**: Contains all data files (as `.csv`'s) used for the figures 
-in the supplemental text.
 
-* **`source_data`**: Contains all of the data obtained from individual papers.
-In all cases, these data were collated into the datasets present in 
-`main_figure_data` and `supplement_figure_data`.  An exxception is the file 
-`COG_assignment.txt` which corresponds to our manual COG assignments as 
-displayed in Figure S3(A). 
+* **`source_data`**: 
+tbd
 
 ### `docs`
 This directory contains all files used to generate the paper website. For most 
 purposes, this directory can be ignored. 
 
 ### `figures`
-This directory contains PDF files of all of the figures present in the manuscript
+This directory contains  files of all of the figures present in the manuscript
 as well as the HTML files of the interactive figures.
 
 ## License
