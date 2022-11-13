@@ -9,6 +9,26 @@
 # of the `page01_people.md` file.
 # ##############################################################################
 - author:
+  name: Markus Arnoldini
+  link: "https://micro.biol.ethz.ch/people/person-detail.html?persid=122262"
+  title: Project Scientist
+  img: markus.png
+  institute: ETH Zurich
+  other_info:
+    Email Address: markus.arnoldini@hest.ethz.ch
+- author:
+  name: Richa Sharma
+  institute: Stanford Univeristy
+- author:
+  name: Julien Chabbey
+  institute: ETH Zurich
+- author:
+  name: Griffin Chure
+  link: "https://gchure.github.io"
+  title: NSF Postdoctoral Research Fellow
+  img: griffin.png
+  institute: Stanford Univeristy
+- author:
   name: Jonas Cremer
   link: "https://cremerlab.com"
   title: Assistant Professor of Biology
