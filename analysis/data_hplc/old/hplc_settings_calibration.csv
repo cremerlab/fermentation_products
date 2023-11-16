@@ -1,0 +1,8 @@
+required,,,,,,,,,,not required
+sample,foldername,concentration,hplc_machine,peaks_manual,peaks_autofitting,background_substraction,setting_background_substraction,fitting_boundaries,time_window,notes
+230706_YCA_scfa_0.5mM,YCA_scfa_calibration_230706_2.5mM,0.5,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",TRUE,TRUE,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",
+230706_YCA_scfa_1mM,YCA_scfa_calibration_230706_2.5mM,1,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",TRUE,TRUE,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",37]
+230706_YCA_scfa_3mM,YCA_scfa_calibration_230706_2.5mM,3,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",TRUE,TRUE,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",
+230706_YCA_scfa_5mM,YCA_scfa_calibration_230706_2.5mM,5,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",TRUE,TRUE,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",
+230706_YCA_scfa_8mM,YCA_scfa_calibration_230706_2.5mM,8,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",TRUE,TRUE,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",
+230706_YCA_scfa_10mM,YCA_scfa_calibration_230706_2.5mM,10,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",TRUE,TRUE,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",

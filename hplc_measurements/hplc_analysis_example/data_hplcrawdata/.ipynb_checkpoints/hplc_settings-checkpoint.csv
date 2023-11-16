@@ -1,0 +1,7 @@
+required,,,,,,,,,,not required
+sample,foldername,peak_assignment,hplc_machine,peaks_manual,peaks_autofitting,background_substraction,setting_background_substraction,fitting_boundaries,time_window,notes
+230607_P.copri1_1,YCA_scfa_calibration_230706_2.5mM,peakinfo_standard_Palo_Alto,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",True,True,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",
+230607_P.copri1_2,YCA_scfa_calibration_230706_2.5mM,peakinfo_standard_Palo_Alto,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",True,True,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",37]
+230607_P.copri1_3,YCA_scfa_calibration_230706_2.5mM,peakinfo_standard_Palo_Alto,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",True,True,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",
+230607_P.copri1_4,YCA_scfa_calibration_230706_2.5mM,peakinfo_standard_Palo_Alto,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",True,True,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",
+230607_P.copri1_5,YCA_scfa_calibration_230706_2.5mM,peakinfo_standard_Palo_Alto,Shimadzu_ProminenceLC2030C,"[21.75,20.9,23.1,27.2,28.2,35.8]",True,True,80,"[0.1,0.3,0.0,-0.1,10,0.3,0.8,0.1]","[12,37]",
