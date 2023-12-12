@@ -7,42 +7,176 @@ import bokeh.models
 import bokeh.layouts
 import os
 import utils
+
 cor, pal = utils.bokeh_style()
 FNAME = './output/interactive_excretion.html'
 bokeh.io.output_file(FNAME)
 data = pd.read_csv('./processed_data/interactive_fermentation_products.csv')
+data.loc[data['study_name'].str.contains('Tett'), 'study_name'] = 'TettAJ_2019'
+study_data = pd.read_csv('./selected_studies_forinteractive_mapper.csv')
+study_dict = {k:v for k, v in zip(study_data['study_name'].values, study_data['key'].values)}
+study_menu = [(k,v) for k, v in study_dict.items()]
+data['study_name_key'] = [study_dict[k] for k in data['study_name'].values]
+data.dropna(inplace=True)
+
+studies = study_menu.append(('All', ''))
+health = list(data['disease_state'].unique())
+ages = list(data['age_category'].unique())
+for k in [health, ages]:
+    k.append('All')
 INIT_VALUE = 50
+INIT_BINS = 25
 GLUCOSE_MASS = 0.18016 #in g per mmol
+fps = ['glucose', 'maltose', 'acetate', 
+       'formate', 'butyrate', 'propionate', 'lactate',
+       'succinate']
+for f in fps:
+    data[f] = data[f].fillna(0)
 
 data['drymass'] = (INIT_VALUE/GLUCOSE_MASS) / data['total_uptake']
+
+data['total_excretion'] = data[fps[2:]].sum(axis=1)
+data['total_excretion_mass'] = data['total_excretion'] * data['drymass']
+fps = fps[2:]
 data.sort_values(by='drymass', inplace=True)
 
-input = bokeh.models.Slider(start=0.1, end=100, value=INIT_VALUE, step=0.1, 
-                            title='Lower-Intestine Carbohydrate Load [g / day]')
+source = bokeh.models.ColumnDataSource(data)
+biomass_hist, biomass_bins = np.histogram(data['drymass'], bins=INIT_BINS)
+total_fp_hist, total_fp_bins = np.histogram(data['total_excretion_mass'], bins=INIT_BINS)
+composition_hist, composition_bins = np.histogram(data['bm_fraction'], bins=INIT_BINS)
 
-biomass_ax = bokeh.plotting.figure(x_axis_label='total bacterial drymass [g]')
-x = np.sort(data['drymass'].values)
-y = np.arange(len(data)) / len(data)
-biomass_ax.step(x=x, y=y, line_color=cor['primary_blue'])
+fp_cds_dict = {}
+for f in fps:
+    hist, bins = np.histogram(data[f] * data['drymass'], bins=INIT_BINS)
+    cds = bokeh.models.ColumnDataSource({'top':hist, 'bottom':np.zeros_like(hist),
+                                         'left':bins[:-1], 'right':bins[1:]})
+    fp_cds_dict[f] = cds
 
-args = {'input_slider': input,
-        'X_VAL': x}
+biomass_dist_data = bokeh.models.ColumnDataSource({'top':biomass_hist, 'bottom':np.zeros_like(biomass_hist), 
+                                                   'left':biomass_bins[:-1], 'right':biomass_bins[1:]})
+total_fp_dist_data = bokeh.models.ColumnDataSource({'top':total_fp_hist, 'bottom':np.zeros_like(total_fp_hist), 
+                                                   'left':total_fp_bins[:-1], 'right':total_fp_bins[1:]})
+total_composition_dist_data = bokeh.models.ColumnDataSource({'top':composition_hist, 'bottom':np.zeros_like(composition_hist), 
+                                                   'left':composition_bins[:-1], 'right':composition_bins[1:]})
+
+# ##############################################################################
+# INPUT WIDGET DEFINITION
+# ##############################################################################
+
+input_slider = bokeh.models.Slider(start=0.1, end=100, value=INIT_VALUE, step=0.1, 
+                            title='Lower-Intestine Carbohydrate Load [g / day]',
+                            sizing_mode='stretch_width', bar_color=cor['primary_black'])
+study_selector = bokeh.models.Select(value="all", options=study_menu, title='Study')
+disease_selector = bokeh.models.Select(value="all", options=health, title='Health status')
+age_selector = bokeh.models.Select(value="all", options=ages, title='Age category')
+
+# ##############################################################################
+# AXIS DEFINITION
+# ##############################################################################
+biomass_ax = bokeh.plotting.figure(x_axis_label='total bacterial drymass [g]', 
+                                   y_axis_label='number of individuals',
+                                   width=300, height=260,
+                                   x_range=(0, 80),
+                                   y_range=(0, 3500))
+
+total_fp_ax = bokeh.plotting.figure(x_axis_label='total daily fermentation product [mmol]', 
+                                   y_axis_label='number of individuals',
+                                   width=300, height=260,
+                                   x_range=(0, 3000),
+                                   y_range=(0, 6000))
+
+total_composition_ax = bokeh.plotting.figure(x_axis_label='characterized fraction [%]', 
+                                   y_axis_label='number of individuals',
+                                   width=450, height=200,
+                                   x_range=(0, 100))
+
+fp_ax = {}
+for i, f in enumerate(fps):
+    if i == 0:
+        x_range = (0, 1000)
+        y_range = (0, 5000)
+    else:
+        x_range = fp_ax['acetate'].x_range
+        y_range = (0, 3500)
+    fp_ax[f] = bokeh.plotting.figure(x_axis_label='total daily amount [mmol / day]',
+                                     y_axis_label='number of individuals',
+                                     title=f'secreted {f}', width=250, height=180,
+                                     x_range=x_range,
+                                     y_range=y_range)
+
+
+################################################################################
+# CANVAS POPULATION
+################################################################################
+fps_cor = {'acetate':cor['dark_blue'], 'formate':cor['gold'], 
+           'propionate':cor['light_blue'], 'butyrate':cor['dark_green'],
+           'lactate':cor['light_green'], 'succinate':cor['primary_blue']}
+nox = ['acetate', 'formate', 'propionate', 'lactate']
+for f in fps:
+    fp_ax[f].quad(top='top', bottom='bottom', left='left', right='right',
+                fill_color=fps_cor[f], line_color=fps_cor[f],
+                source=fp_cds_dict[f])
+    if f in nox:
+        fp_ax[f].xaxis.axis_label = ''
+        fp_ax[f].xaxis.axis_line_width = 0
+        fp_ax[f].xaxis.minor_tick_in = 0
+        fp_ax[f].xaxis.minor_tick_out = 0
+        fp_ax[f].xaxis.major_label_text_font_size = "0pt"
+
+biomass_ax.quad(top='top', bottom='bottom', left='left', right='right',
+                fill_color=cor['light_green'], line_color=cor['light_green'],
+                source=biomass_dist_data)
+
+total_fp_ax.quad(top='top', bottom='bottom', left='left', right='right',
+                fill_color=cor['light_purple'], line_color=cor['light_purple'],
+                source=total_fp_dist_data)
+
+total_composition_ax.quad(top='top', bottom='bottom', left='left', right='right',
+                fill_color=cor['light_black'], line_color=cor['light_black'],
+                source=total_composition_dist_data)
+
+               
+args = {'input_slider': input_slider,
+        'source': source,
+        'biomass_bin_source': biomass_dist_data,
+        'total_fp_bin_source': total_fp_dist_data,
+        'fp_cds':fp_cds_dict}
 cb = utils.load_js('interactive_excretion.js', args=args)
+input_slider.js_on_change('value', cb)
 
-input.js_on_change('value', cb)
-layout = bokeh.layouts.column(input, biomass_ax)
 
-def save_with_d3(layout, fname, jsdelivr='npm/d3@7'):
+
+################################################################################
+# LAYOUT SPECIFICATION
+################################################################################
+selector_col = bokeh.layouts.column(study_selector, age_selector, disease_selector)
+selector_row = bokeh.layouts.row(selector_col, total_composition_ax)
+totals_grid = bokeh.layouts.gridplot([[biomass_ax], [bokeh.layouts.Spacer(height=20)], [total_fp_ax]])
+fp_grid = bokeh.layouts.gridplot([[fp_ax['acetate'], fp_ax['propionate']],
+                                  [fp_ax['formate'], fp_ax['lactate']],
+                                  [fp_ax['butyrate'], fp_ax['succinate']]])
+bottom_row = bokeh.layouts.row(totals_grid, bokeh.layouts.Spacer(width=50), fp_grid)
+layout = bokeh.layouts.column(selector_row, input_slider, bottom_row)
+
+
+
+
+
+
+
+
+def save_with_d3(layout, fname, jsdelivr=['npm/d3@7', 
+                                          'npm/mathjs@12.2.0/lib/browser/math.min.js']):
     bokeh.io.save(layout)
-    _jsdelivr = f"https://cdn.jsdelivr.net/{jsdelivr}"
-    script = f'<script type="text/javascript" src="{_jsdelivr}"></script>\n'
     with open(fname, 'r') as f:
         lines = f.readlines()
     newfile = ""
     added = False
     for l in lines:
         if ('<script' in l) & (added == False):
-            newfile += script
+            for js in jsdelivr:
+                script = f'<script src="https://cdn.jsdelivr.net/{js}"></script>\n'
+                newfile += script
             added = True  
         newfile += l
     os.remove(fname)
