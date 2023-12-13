@@ -1,4 +1,5 @@
 #%%
+
 import numpy as np
 import pandas as pd
 import bokeh.io 
@@ -13,17 +14,52 @@ FNAME = './output/interactive_excretion.html'
 bokeh.io.output_file(FNAME)
 data = pd.read_csv('./processed_data/interactive_fermentation_products.csv')
 data.loc[data['study_name'].str.contains('Tett'), 'study_name'] = 'TettAJ_2019'
+
+# Generate mappers for study names and diseases 
 study_data = pd.read_csv('./selected_studies_forinteractive_mapper.csv')
 study_dict = {k:v for k, v in zip(study_data['study_name'].values, study_data['key'].values)}
-study_menu = [(k,v) for k, v in study_dict.items()]
-data['study_name_key'] = [study_dict[k] for k in data['study_name'].values]
+age_dict = {'newborn': 'Newborn',
+            'child': 'Child',
+            'schoolage': 'Schoolage',
+            'adult': 'Adult',
+            'senior': 'Senior'}  
+
+disease_dict = {
+    'healthy': 'Healthy',
+    'IBD': 'Inflammatory Bowel Disease',
+    'T1D': 'Type I Diabetes',
+    'T2D': 'Type II Diabetes',
+    'T2D;respiratoryinf': 'Type II Diabetes (+ Resp. Infection)',
+    'respiratoryinf': 'Respiratory Infection',
+    'adenoma': 'Adenoma',
+    'CRC': 'Colorectal Cancer',
+    'ACVD': 'Atherosclerotic Cardiovascular Disease',
+    'IGT': 'Impaired Glucose Tolerance',
+    'IGT;respiratoryinf': 'Impaired Glucose Tolerace (+ Resp. Infection)',
+    'STH': 'Soil-Transmitted Helminthiasis',
+    'IBD;perianal_fistula': 'Inflammatory Bowel Disease (+ Perianal Fistula)',
+    'IBD': 'Inflammatory Bowel Disease',
+    'carcinoma_surgery_history': 'History of Carcinoma Surgery',
+    'few_polyps': 'Colorectal Polyps)'
+}
+
+data['study_name'] = [study_dict[k] for k in data['study_name'].values]
+data['age_category'] = [age_dict[k] for k in data['age_category'].values]
+data['disease_state'] = [disease_dict[k] for k in data['disease_state'].values]
+
 data.dropna(inplace=True)
 
-studies = study_menu.append(('All', ''))
-health = list(data['disease_state'].unique())
-ages = list(data['age_category'].unique())
-for k in [health, ages]:
-    k.append('All')
+study_state_dict = {}
+for g, d in data.groupby('study_name'):
+    age_dict_ = {}
+    for _g, _d in  d.groupby('age_category'):
+        age_dict_[_g] = list(_d['disease_state'].unique())
+    study_state_dict[g] = age_dict_
+
+
+study_menu = list(data['study_name'].unique())
+study_menu.append('All Studies')
+
 INIT_VALUE = 50
 INIT_BINS = 25
 GLUCOSE_MASS = 0.18016 #in g per mmol
@@ -63,12 +99,14 @@ total_composition_dist_data = bokeh.models.ColumnDataSource({'top':composition_h
 # INPUT WIDGET DEFINITION
 # ##############################################################################
 
-input_slider = bokeh.models.Slider(start=0.1, end=100, value=INIT_VALUE, step=0.1, 
+input_slider = bokeh.models.Slider(start=10, end=100, value=INIT_VALUE, step=0.1,
                             title='Lower-Intestine Carbohydrate Load [g / day]',
                             sizing_mode='stretch_width', bar_color=cor['primary_black'])
-study_selector = bokeh.models.Select(value="all", options=study_menu, title='Study')
-disease_selector = bokeh.models.Select(value="all", options=health, title='Health status')
-age_selector = bokeh.models.Select(value="all", options=ages, title='Age category')
+
+
+study_selector = bokeh.models.Select(value='All Studies', options=study_menu, title='Study')
+age_selector = bokeh.models.MultiChoice(value=["Adult"], options=list(data['age_category'].unique()), title='Age category', sizing_mode='stretch_width')
+disease_selector = bokeh.models.MultiChoice(value=["Healthy"], options=list(data['disease_state'].unique()), title='Health status', sizing_mode='stretch_width')
 
 # ##############################################################################
 # AXIS DEFINITION
@@ -135,16 +173,26 @@ total_composition_ax.quad(top='top', bottom='bottom', left='left', right='right'
                 fill_color=cor['light_black'], line_color=cor['light_black'],
                 source=total_composition_dist_data)
 
-               
+################################################################################               
+# CALLBACK DEFINITION
+################################################################################               
 args = {'input_slider': input_slider,
         'source': source,
         'biomass_bin_source': biomass_dist_data,
         'total_fp_bin_source': total_fp_dist_data,
-        'fp_cds':fp_cds_dict}
+        'fp_cds':fp_cds_dict,
+        'study_selector': study_selector,
+        'age_selector':age_selector,
+        'disease_selector':disease_selector,
+        'study_state_dict':study_state_dict,
+        'age_dict':age_dict,
+        'disease_dict':disease_dict}
+
 cb = utils.load_js('interactive_excretion.js', args=args)
 input_slider.js_on_change('value', cb)
-
-
+study_selector.js_on_change('value', cb)
+age_selector.js_on_change('value', cb)
+disease_selector.js_on_change('value', cb)
 
 ################################################################################
 # LAYOUT SPECIFICATION
@@ -158,13 +206,9 @@ fp_grid = bokeh.layouts.gridplot([[fp_ax['acetate'], fp_ax['propionate']],
 bottom_row = bokeh.layouts.row(totals_grid, bokeh.layouts.Spacer(width=50), fp_grid)
 layout = bokeh.layouts.column(selector_row, input_slider, bottom_row)
 
-
-
-
-
-
-
-
+################################################################################
+# EXPORT 
+################################################################################
 def save_with_d3(layout, fname, jsdelivr=['npm/d3@7', 
                                           'npm/mathjs@12.2.0/lib/browser/math.min.js']):
     bokeh.io.save(layout)

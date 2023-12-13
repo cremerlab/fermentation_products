@@ -5,6 +5,39 @@ let biomass_bin_data = biomass_bin_source.data;
 let total_fp_bin_data = total_fp_bin_source.data;
 let drymass = []
 let total_fp = []
+let study = study_selector.value;
+let age = age_selector.value;
+let age_menu = []
+if (study == "All Studies") {
+    age_menu = ['Newborn', 'Child', 'Schoolage', 'Adult', 'Senior']
+}
+else {
+    age_menu = Object.keys(study_state_dict[study]);
+}
+
+age_selector.options = age_menu;
+if (study == "All Studies") {
+    var studies = Object.keys(study_state_dict)
+} else {
+    var studies = [study]
+}
+console.log('studies')
+let disease_menu = []
+for (var i = 0; i < studies.length; i++) {
+    let study_ = studies[i];
+    for (var j = 0; j < age.length; j++) {
+        let age_ = age[j]
+        var diseases_ = study_state_dict[study_][age_]
+        for (var k = 0; k < diseases_.length; k++) {
+            if (disease_menu.includes(diseases_[k]) == false) {
+                disease_menu.push(diseases_[k])
+            }
+        }
+    }
+}
+
+disease_selector.options = disease_menu;
+
 const binningFn = d3.bin();
 let fps = ['acetate', 'butyrate', 'formate', 'lactate', 'propionate', 'succinate']
 for (var i = 1; i < data['drymass'].length; i++) {
@@ -13,8 +46,6 @@ for (var i = 1; i < data['drymass'].length; i++) {
     total_fp.push(drymass_ * data['total_excretion'][i])
 }
 
-
-console.log(data[fps[1]])
 for (var i = 0; i < fps.length; i++) {
     var data_ = fp_cds[fps[i]].data;
     let excretion_ = []
@@ -36,7 +67,7 @@ for (var i = 0; i < fps.length; i++) {
     data_['bottom'] = bottom;
     data_['top'] = top;
     data_['left'] = left;
-    ata_['right'] = right;
+    data_['right'] = right;
     fp_cds[fps[i]].change.emit();
 }
 
