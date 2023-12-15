@@ -1,4 +1,3 @@
-let mCarbInput = input_slider.value;
 let GLUCOSE_MASS = 0.18016;
 let data = source.data;
 let biomass_bin_data = biomass_bin_source.data;
@@ -10,8 +9,25 @@ let age = age_selector.value;
 let disease = disease_selector.value;
 const binningFn = d3.bin();
 const charBinningFn = d3.bin().domain([0, 100]);
+if (tab_selector.active == 0) {
+    var mCarbInput = input_slider.value;
+}
+else if (tab_selector.active == 1) {
+    var mCarbInput = 0.13 * starch_slider.value + 0.5 * fiber_slider.value;
+}
+else {
 
+    if (diet_selector.active == 0) {
+        var mCarbInput = 24.6;
+    }
+    else if (diet_selector.active == 1) {
+        var mCarbInput = 35.7;
+    }
 
+    else {
+        var mCarbInput = 57.6;
+    }
+}
 // Populate the age and disease selector
 let age_menu = []
 if (study == "All Studies") {
@@ -27,26 +43,19 @@ if (study == "All Studies") {
 }
 
 let disease_menu = []
-if (study == "All Studies") {
-    disease_menu = ['Healthy', 'Inflammatory Bowel Disease', 'Type I Diabetes',
-        'Type II Diabetes', 'Adenoma',
-        'Colorectal Cancer', 'Atherosclerotic Cardiovascular Disease',
-        'Impaired Glucose Tolerance', 'Soil-Transmitted Helminthiasis', 'History of Carcinoma Surgery',
-        'Colorectal Polyps']
-}
 
-else {
-    for (var i = 0; i < studies.length; i++) {
-        let study_ = studies[i];
-        for (var j = 0; j < age.length; j++) {
-            let age_ = age[j]
-            var diseases_ = study_state_dict[study_][age_]
+for (var i = 0; i < studies.length; i++) {
+    let study_ = studies[i];
+    for (var j = 0; j < age.length; j++) {
+        if (Object.keys(study_state_dict[study_]).includes(age[j])) {
+            var diseases_ = study_state_dict[study_][age[j]]
             for (var k = 0; k < diseases_.length; k++) {
                 if (disease_menu.includes(diseases_[k]) == false) {
                     disease_menu.push(diseases_[k])
                 }
             }
         }
+
     }
 }
 
@@ -107,16 +116,47 @@ for (var i = 1; i < data['drymass'].length; i++) {
 }
 
 table_vals.push(drymass.length)
-table_vals.push(parseFloat(math.median(...characterized).toPrecision(3)))
-table_vals.push(parseFloat(math.mean(...drymass).toPrecision(3)))
-for (var i = 0; i < fps_keys.length; i++) {
-    table_vals.push(parseFloat(math.mean(...fps[fps_keys[i]]).toPrecision(3)))
+if (drymass.length > 2) {
+    table_vals.push(parseFloat(math.median(...characterized).toPrecision(3)))
 }
-table_vals.push(parseFloat(math.mean(...total_fp).toPrecision(3)))
-table_vals.push(parseFloat(math.mean(...total_energy).toPrecision(3)))
+else {
+    table_vals.push('Not enough individuals to compute median.')
+}
+table_vals.push(parseFloat(mCarbInput.toPrecision(3)))
+
+if (drymass.length > 2) {
+    table_vals.push(parseFloat(math.mean(...drymass).toPrecision(3)))
+}
+else {
+    table_vals.push('Not enough individuals to compute mean.')
+}
+for (var i = 0; i < fps_keys.length; i++) {
+    if (drymass.length > 2) {
+        table_vals.push(parseFloat(math.mean(...fps[fps_keys[i]]).toPrecision(3)))
+
+    }
+    else {
+        table_vals.push('Not enough individuals to compute mean.')
+    }
+}
+
+if (drymass.length > 2) {
+    table_vals.push(parseFloat(math.mean(...total_fp).toPrecision(3)))
+
+}
+else {
+    table_vals.push('Not enough individuals to compute mean.')
+}
+
+if (drymass.length > 2) {
+    table_vals.push(parseFloat(math.mean(...total_energy).toPrecision(3)))
+
+}
+else {
+    table_vals.push('Not enough individuals to compute mean.')
+}
 table_cds.data['Value'] = table_vals
 table_cds.change.emit()
-console.log(table_vals)
 for (var i = 0; i < fps_keys.length; i++) {
     var data_ = fp_cds[fps_keys[i]].data;
     let binned = binningFn(fps[fps_keys[i]])

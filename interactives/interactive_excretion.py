@@ -85,16 +85,17 @@ composition_hist, composition_bins = np.histogram(_data['bm_fraction'], bins=INI
 energy_hist, energy_bins = np.histogram(_data['total_energy'], bins=INIT_BINS)
  
 
-table_dict = {'Quantity': ['Number of individuals', 'Median Characterized Fraction', 'Average Bacterial Drymass Growth', 
+table_dict = {'Quantity': ['Number of individuals', 'Median Characterized Fraction', 'Microbiota Accessible Carbohydrates', 'Average Bacterial Drymass Growth', 
                            'Average Acetate', 'Average Propionate', 'Average Formate', 'Average Lactate',
                            'Average Butyrate', 'Average Succinate', 'Average Total Fermentation Products', 'Average Daily Energy From Fermentation Products'], 
-              'Units': ['#', '%', 'g / person / day', 'mmol / person/ day',
+              'Units': ['#', '%', 'g / person / day', 'g / person / day', 'mmol / person/ day',
                         'mmol / person/ day', 'mmol / person / day', 
                         'mmol / person / day', 'mmol / person / day',
                         'mmol / person / day', 'mmol / person / day',
                         'kcal / person / day'],
               'Value' : [len(_data),
                          round(_data['bm_fraction'].median(), 2),
+                         INIT_VALUE,
                          round(_data['drymass'].mean(), 2),
                          round(_data['acetate'].mean(), 2),
                          round(_data['propionate'].mean(), 2),
@@ -130,9 +131,19 @@ total_energy_dist_data = bokeh.models.ColumnDataSource({'top':energy_hist, 'bott
 input_slider = bokeh.models.Slider(start=10, end=100, value=INIT_VALUE, step=0.1,
                             title='Lower-Intestine Carbohydrate Load [g / day]',
                             sizing_mode='stretch_width', bar_color=cor['primary_black'])
+starch_slider = bokeh.models.Slider(start=10, end=1000, value=200, title='consumed starch [g / day]', bar_color=cor['primary_black'], width=400)
+fiber_slider = bokeh.models.Slider(start=10, end=1000, value=200, title='consumed fiber [g / day]', bar_color=cor['primary_black'], width=400)
+diet_selector = bokeh.models.RadioButtonGroup(labels=["British Reference Diet", "NIHGMS American Diet", "Hadza Diet"], active=None,
+                                              sizing_mode='stretch_width')
+
 study_selector = bokeh.models.Select(value='All Studies', options=study_menu, title='Study')
 age_selector = bokeh.models.MultiChoice(value=["Adult"], options=list(data['age_category'].unique()), title='Age category', width=400)
 disease_selector = bokeh.models.MultiChoice(value=["Healthy"], options=list(data['disease_state'].unique()), title='Health status', width=400)
+
+mac_input_panes = bokeh.models.TabPanel(child=input_slider, title="Adjust Total Large Intestine Carbohydrate Load")
+starch_fiber_composition = bokeh.models.TabPanel(child=bokeh.layouts.row(starch_slider, fiber_slider, sizing_mode='stretch_width'), title="Adjust Consumed Starch and Fiber")
+diet_radio = bokeh.models.TabPanel(child=diet_selector, title='Select Reference Diet')
+tab = bokeh.models.Tabs(tabs=[mac_input_panes, starch_fiber_composition, diet_radio], sizing_mode='stretch_width')
 
 # ##############################################################################
 # AXIS DEFINITION
@@ -225,13 +236,21 @@ args = {'input_slider': input_slider,
         'age_dict':age_dict,
         'disease_dict':disease_dict,
         'table_cds': table_cds,
-        'total_energy_bin_source':total_energy_dist_data}
+        'total_energy_bin_source':total_energy_dist_data,
+        'tab_selector':tab,
+        'starch_slider':starch_slider,
+        'fiber_slider': fiber_slider,
+        'diet_selector': diet_selector}
 
 cb = utils.load_js('interactive_excretion.js', args=args)
 input_slider.js_on_change('value', cb)
 study_selector.js_on_change('value', cb)
 age_selector.js_on_change('value', cb)
 disease_selector.js_on_change('value', cb)
+tab.js_on_change('active', cb)
+starch_slider.js_on_change('value', cb)
+fiber_slider.js_on_change('value', cb)
+diet_selector.js_on_event('button_click', cb)
 
 ################################################################################
 # LAYOUT SPECIFICATION
@@ -243,8 +262,9 @@ fp_grid = bokeh.layouts.gridplot([[fp_ax['acetate'], fp_ax['propionate']],
                                   [fp_ax['formate'], fp_ax['lactate']],
                                   [fp_ax['butyrate'], fp_ax['succinate']]])
 bottom_row = bokeh.layouts.row(totals_grid, bokeh.layouts.Spacer(width=15), bokeh.models.Div(text='<div style="border-left:1px solid #afafaf;height:550px"></div>', sizing_mode='stretch_height', width=10), fp_grid)
-# Spacer(width=50)
-layout = bokeh.layouts.column(selector_row, input_slider, bottom_row, data_table)
+row_div1 = bokeh.models.Div(text='<div style="border-bottom:1px solid #afafaf;width:860px"></div>') 
+row_div2 = bokeh.models.Div(text='<div style="border-bottom:1px solid #afafaf;width:860px"></div>') 
+layout = bokeh.layouts.column(selector_row, row_div1, tab, bokeh.models.Div(text='<div style="border-bottom:1px solid #afafaf;width:860px"></div>'), bottom_row, row_div2, data_table)
 
 ################################################################################
 # EXPORT 
