@@ -27,7 +27,7 @@ def energycalc_array(inputv,scenario='reference',calctype='none',dict_yielddata=
 def cal_energy_FP(excretion,order):
     energyc=0
     enthalpy_sub=['glucose','maltose','acetate','butyrate','formate','lactate','propionate','succinate']
-    enthalpy=[0.68,1.36,0.21,0.52,0.,.33,0.37,0.36]
+    enthalpy=[0.68,1.36,0.21,0.52,0.,.33,0.37,0.36] 
     iS = -1
     #print(order)
     #print(excretion)
@@ -102,21 +102,12 @@ def dryweight_fromwetweight(wetmassin,calculationmode=1,fraction=False):
         curc=0.25
     elif calculationmode==1:
         #linear decrease
-        parc=[4.51983502e-04, 6.83010210e-01]
+        parc=[4.63384822e-04, 6.85305059e-01]
         curc=1.-(wetmassin*parc[0]+parc[1])
-    elif calculationmode==2:
-        #sqare route behavior
-        parc=[0.60157533, 0.0125274 ]
-        curc=1-(parc[0] +parc[1]*np.sqrt(wetmassin))
     elif calculationmode==3:
         #sqrt behavior + linear
-        parc=[ 0.49123749,  0.03019306, -0.00066814]
+        parc=[0.49246012,  0.03076236, -0.00070195]
         curc= 1.-(parc[0] +parc[1]*np.sqrt(wetmassin)+parc[2]*wetmassin)
-    elif calculationmode==4:
-        #1/x behavior
-        #parc=[0.83606711,10.12454567]
-        parc=[ 0.15933972, 11.06740449]
-        curc=(parc[0]+parc[1]/wetmassin)
     else:
         error
     if fraction==True:
