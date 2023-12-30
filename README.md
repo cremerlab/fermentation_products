@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10445505.svg)](https://doi.org/10.5281/zenodo.10445505)
 
 # `fermentation_products`
 This repository houses all data and code (analysis and illustration) used in our study "Quantifying the daily fermentation product harvest from the human gut microbiota".
