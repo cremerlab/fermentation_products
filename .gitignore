@@ -1,0 +1,10 @@
+*.DS_*tore
+*.png
+*.swp
+*cache*
+*checkpoints*
+*.tar.gz
+*.bbl
+*.log
+*.swp
+*pyc*
