@@ -29,9 +29,9 @@ google_analytics: ""
 # Site navigation - each item must have a title and a url.
 navigation:
   - text: Home
-    url: /
+    url: https://ceremerlab.github.io/fermentation_products
   - text: Estimated FP Excretion Explorer
-    url: fermentation_products/study-explorer
+    url: https://cremerlab.github.io/fermentation_products/study-explorer
   # - text: Style Guide
   #   url: /style-guide/
   # - text: Tags
