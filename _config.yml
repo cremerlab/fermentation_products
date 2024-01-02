@@ -43,7 +43,7 @@ navigation:
 # disqus: justgoodthemes
 
 # Colors
-accent_color: '#FFF'
+accent_color: '#3373ba' # '#FFF'
 
 # Site footer
 footer:
