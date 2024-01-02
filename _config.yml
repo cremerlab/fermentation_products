@@ -30,7 +30,7 @@ google_analytics: ""
 navigation:
   - text: Home
     url: /
-  - text: Microbiome Study Explorer
+  - text: Estimated FP Excretion Explorer
     url: fermentation_products/study-explorer/
   # - text: Style Guide
   #   url: /style-guide/
