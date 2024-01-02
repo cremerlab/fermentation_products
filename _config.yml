@@ -15,10 +15,10 @@ title: "Fermentation Product Diversity"
 description: ""
 
 # The subpath of your site, e.g. /blog, for generating urls.
-baseurl: "" #"microbiome-fermentation-products/" #"https://cremerlab.github.io"
+baseurl: "fermentation_products/" 
 
 # The base hostname & protocol of your site for where absolute urls are needed.
-url: "" # "https://cremerlab.github.io"
+url: "https://cremerlab.github.io"
 
 # Favicon
 favicon: images/favicon.png
