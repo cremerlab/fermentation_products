@@ -31,7 +31,7 @@ navigation:
   - text: Home
     url: /
   - text: Estimated FP Excretion Explorer
-    url: /study-explorer
+    url: fermentation_products/study-explorer
   # - text: Style Guide
   #   url: /style-guide/
   # - text: Tags
