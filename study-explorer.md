@@ -36,8 +36,7 @@ secreted fermentation products.
 
 
 
-### Referenced Studies
-
+### Referenced Data Sets 
 1. Asnicar, F. *et al.*  [Microbiome connections with host metabolism and habitual diet from 1,098 deeply phenotyped individuals](https://www.nature.com/articles/s41591-020-01183-8). Nat Med 27, 321–332 (2021). 
 2. Rubel, M. A. *et al.*  [Lifestyle and the presence of helminths is associated with gut microbiome composition in Cameroonians](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02020-4). Genome Biology 21, 122 (2020).
 3. Tett, A. *et al.* [The *Prevotella copri* Complex Comprises Four Distinct Clades Underrepresented in Westernized Populations](https://www.sciencedirect.com/science/article/pii/S1931312819304275). Cell Host & Microbe 26, 666-679.e7 (2019).
@@ -58,3 +57,6 @@ secreted fermentation products.
 18. Nielsen, H. B. *et al.* [Identification and assembly of genomes and genetic elements in complex metagenomic samples without using reference genomes](https://www.nature.com/articles/nbt.2939). Nat Biotechnol 32, 822–828 (2014).
 19. Li, J. *et al.* [An integrated catalog of reference genes in the human gut microbiome](https://www.nature.com/articles/nbt.2942). Nat Biotechnol 32, 834–841 (2014).
 20. Huttenhower, C. *et al.* [Structure, function and diversity of the healthy human microbiome](https://www.nature.com/articles/nature11234). Nature 486, 207–214 (2012).
+
+### Reference Taxonomic Studies 
+Analysis based on cross-study taxonomic abundances reported in the Curated Metagenomic Data project (Pasolli *et al.*  [Accessible, curated metagenomic data through ExperimentHub](https://www.nature.com/articles/nmeth.4468). Nat. Methods. (2017).)
