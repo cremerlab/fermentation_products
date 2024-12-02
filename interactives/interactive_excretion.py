@@ -1,5 +1,4 @@
 # %%
-
 import numpy as np
 import pandas as pd
 import bokeh.io
@@ -22,7 +21,7 @@ study_dict = {k: v for k, v in zip(
     study_data['study_name'].values, study_data['key'].values)}
 fps_enthalpies = {'acetate': 0.21, 'butyrate': 0.52, 'formate': 0.0,
                   'lactate': 0.33, 'propionate': 0.37, 'succinate': 0.36}
-# tot = np.sum(tot, axis=0)
+
 age_dict = {'newborn': 'Newborn',
             'child': 'Child',
             'schoolage': 'Schoolage',
