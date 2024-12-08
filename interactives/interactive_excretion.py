@@ -12,7 +12,6 @@ cor, pal = utils.bokeh_style()
 FNAME = './output/interactive_excretion.html'
 bokeh.io.output_file(FNAME)
 data = pd.read_csv('./processed_data/interactive_fermentation_products.csv')
-data = data[data['disease_state'] != 'respiratoryinf']
 data.loc[data['study_name'].str.contains('Tett'), 'study_name'] = 'TettAJ_2019'
 
 # Generate mappers for study names and diseases
@@ -27,6 +26,10 @@ age_dict = {'newborn': 'Newborn',
             'schoolage': 'Schoolage',
             'adult': 'Adult',
             'senior': 'Senior'}
+# Get a list of diseases with at least 50 measurements
+diseases = data.groupby('disease_state').count().reset_index()
+diseases = diseases[diseases['study_name'] >= 50]
+diseases
 
 disease_dict = {
     'healthy': 'Healthy',
@@ -39,16 +42,27 @@ disease_dict = {
     'CRC': 'Colorectal Cancer',
     'ACVD': 'Atherosclerotic Cardiovascular Disease',
     'IGT': 'Impaired Glucose Tolerance',
-    'IGT;respiratoryinf': 'Impaired Glucose Tolerace',
+    'IGT;respiratoryinf': 'Impaired Glucose Tolerance',
     'STH': 'Soil-Transmitted Helminthiasis',
     'IBD;perianal_fistula': 'Inflammatory Bowel Disease',
     'carcinoma_surgery_history': 'History of Carcinoma Surgery',
-    'few_polyps': 'Colorectal Polyps'
+    'few_polyps': 'Colorectal Polyps',
+    'premature_born': 'Born Premature',
+    'RA': 'Rheumatoid Arthritis',
+    'ME/CFS': 'Myalgic Encephalomyelitis/Chronic Fatigue Syndrome',
+    'acute_diarrhoea': 'Acute Diarrhea',
+    'ascites;cirrhosis;heptatitis': 'Cirrhosis/Hepatitis',
+    'fatty_liver': 'Fatty Liver Disease',
+    'hypertension': 'Hypertension',
+    'melanoma;metastases': 'Melanoma',
+    'metabolic_syndrome': 'Metabolic Syndrome',
+    'otitis': 'Otitis',
+    'schizofrenia': 'Shizophrenia',
 }
 
 data['study_name'] = [study_dict[k] for k in data['study_name'].values]
 data['age_category'] = [age_dict[k] for k in data['age_category'].values]
-data['disease_state'] = [disease_dict[k] for k in data['disease_state'].values]
+data['disease_state'] = [disease_dict[k] if k in disease_dict else 'other' for k in data['disease_state'].values]
 data.dropna(inplace=True)
 study_state_dict = {}
 for g, d in data.groupby('study_name'):
@@ -147,7 +161,7 @@ study_selector = bokeh.models.Select(
 age_selector = bokeh.models.MultiChoice(value=["Adult"], options=list(
     data['age_category'].unique()), title='Age category', width=400)
 disease_selector = bokeh.models.MultiChoice(value=["Healthy"], options=list(
-    data['disease_state'].unique()), title='Health status', width=400)
+    disease_dict.values()), title='Health status', width=400)
 
 mac_input_panes = bokeh.models.TabPanel(
     child=input_slider, title="Adjust Total Microbiota Available Carbohydrates")
@@ -196,9 +210,9 @@ for i, f in enumerate(fps):
 ################################################################################
 # CANVAS POPULATION
 ################################################################################
-fps_cor = {'acetate': cor['light_blue'], 'formate': cor['light_gold'],
-           'propionate': cor['light_green'], 'butyrate': cor['light_purple'],
-           'lactate': cor['pale_blue'], 'succinate': cor['light_black']}
+fps_cor = {'acetate': '#4477AA', 'formate': '#228833',
+           'propionate': '#66CCEE', 'butyrate': '#EE6677', 
+           'lactate': '#CCBB44', 'succinate': '#AA3377'}
 nox = ['acetate', 'formate', 'propionate', 'lactate']
 for f in fps:
     fp_ax[f].quad(top='top', bottom='bottom', left='left', right='right',
