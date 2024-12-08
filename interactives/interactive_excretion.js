@@ -18,10 +18,10 @@ else if (tab_selector.active == 1) {
 else {
 
     if (diet_selector.active == 0) {
-        var mCarbInput = 36.0;
+        var mCarbInput = 35.7;
     }
     else if (diet_selector.active == 1) {
-        var mCarbInput = 35.7;
+        var mCarbInput = 24.6;
     }
 
     else {
