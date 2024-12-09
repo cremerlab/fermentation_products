@@ -1,26 +1,24 @@
 ﻿"please double check lit for completion, and taxonomic information of each strain for correctness",names used in metagenomics data base,,,,,,,,,,,,,
 species_HPLCname,species,new_species,species,species_short,new_genus,genus,new_family,family,new_order,order,new_class,class,new_phylum,phylum
-B.vulgatus,Phocaeicola vulgatus,Phocaeicola vulgatus,Bacteroides vulgatus,B. vulgatus,Phocaeicola,Phocaeicola,Bacteroidaceae,Bacteroidaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
+B.uniformis,Bacteroides uniformis,Bacteroides uniformis,Bacteroides uniformis,B. uniformis,Bacteroides,Bacteroides,Bacteroidaceae,Bacteroidaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
 B.fragilis,Bacteroides fragilis,Bacteroides fragilis,Bacteroides fragilis,B. fragilis,Bacteroides,Bacteroides,Bacteroidaceae,Bacteroidaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
 B.ovatus,Bacteroides ovatus,Bacteroides ovatus,Bacteroides ovatus,B. ovatus,Bacteroides,Bacteroides,Bacteroidaceae,Bacteroidaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
 B.theta,Bacteroides thetaiotaomicron,Bacteroides thetaiotaomicron,Bacteroides thetaiotaomicron,B. theta,Bacteroides,Bacteroides,Bacteroidaceae,Bacteroidaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
-P.copri,Prevotella copri,Prevotella copri,Prevotella copri,P. copri,Prevotella,Prevotella,Prevotellaceae,Prevotellaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
 B.finegoldii,Bacteroides finegoldii,Bacteroides finegoldii,Bacteroides finegoldii,B. finegoldii,Bacteroides,Bacteroides,Bacteroidaceae,Bacteroidaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
+B.vulgatus,Phocaeicola vulgatus,Phocaeicola vulgatus,Bacteroides vulgatus,B. vulgatus,Phocaeicola,Phocaeicola,Bacteroidaceae,Bacteroidaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
+P.copri,Prevotella copri,Prevotella copri,Prevotella copri,P. copri,Prevotella,Prevotella,Prevotellaceae,Prevotellaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
 P.distastonis,Parabacteroides distasonis,Parabacteroides distasonis,Bacteroides distasonis,P. distastonis,Parabacteroides,Parabacteroides,Tannerellaceae,Tannerellaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
-E.rectale,Eubacterium rectale,Agathobacter rectalis,Eubacterium rectale,E. rectale,Agathobacter,Lachnospiraceae_NA,Lachnospiraceae,Lachnospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
 R.intestinalis,Roseburia intestinalis,Roseburia intestinalis,Roseburia intestinalis,R. intestinalis,Roseburia,Roseburia,Lachnospiraceae,Lachnospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
+E.rectale,Eubacterium rectale,Agathobacter rectalis,Eubacterium rectale,E. rectale,Agathobacter,Lachnospiraceae_NA,Lachnospiraceae,Lachnospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
+L.eligens,Lachnospira eligens,Lachnospira eligens,Lachnospira eligens,L. eligens,Lachnospira,Lachnospira,Lachnospiraceae,Lachnospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
+D.longicatena,Dorea longicatena,Dorea longicatena,Dorea longicatena,D. longicatena,Dorea,Dorea,Lachnospiraceae,Lachnospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
+F.saccharivorans,Fusicatenibacter saccharivorans,Fusicatenibacter saccharivorans,Fusicatenibacter saccharivorans,F. saccharivorans,Fusicatenibacter,Fusicatenibacter,Lachnospiraceae,Lachnospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
+B.wexleri,Blautia wexlerae,Blautia wexlerae,Blautia wexlerae,B. wexlerae,Blautia,Blautia,Lachnospiraceae,Lachnospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
+B.hydrogenotrophica,Blautia hydrogenotrophica,Blautia hydrogenotrophica,Blautia hydrogenotrophica,B. hydrogenotrophica,Blautia,Blautia,Lachnospiraceae,Lachnospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
 F.prausnitzii,Faecalibacterium prausnitzii,Faecalibacterium prausnitzii,Faecalibacterium prausnitzii,F. prausnitzii,Faecalibacterium,Faecalibacterium,Oscillospiraceae,Oscillospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
+E.siraeum,Eubacterium siraeum,Eubacterium siraeum,Eubacterium siraeum,E. siraeum,[Eubacterium],Oscillospiraceae_NA,Oscillospiraceae,Oscillospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
 R.bromii,Ruminococcus bromii,Ruminococcus bromii,Ruminococcus bromii,R. bromii,Ruminococcus,Ruminococcus,Oscillospiraceae,Oscillospiraceae,Eubacteriales,Eubacteriales,Clostridia,Clostridia,Bacillota,Firmicutes
 B.longum,Bifidobacterium longum,Bifidobacterium longum,Bifidobacterium longum,B. longum,Bifidobacterium,Bifidobacterium,Bifidobacteriaceae,Bifidobacteriaceae,Bifidobacteriales,Bifidobacteriales,Actinomycetia,Actinomycetia,Actinomycetota,Actinobacteria
 B.adolescentis,Bifidobacterium adolescentis,Bifidobacterium adolescentis,Bifidobacterium adolescentis,B. adolescentis,Bifidobacterium,Bifidobacterium,Bifidobacteriaceae,Bifidobacteriaceae,Bifidobacteriales,Bifidobacteriales,Actinomycetia,Actinomycetia,Actinomycetota,Actinobacteria
 C.aerofaciens,Collinsella aerofaciens,Collinsella aerofaciens,Collinsella aerofaciens,C. aerofaciens,Collinsella,Collinsella,Coriobacteriaceae,Coriobacteriaceae,Coriobacteriales,Coriobacteriales,Coriobacteriia,Coriobacteriia,Actinomycetota,Actinobacteria
 E.coli,Escherichia coli,Escherichia coli,Escherichia coli,E. coli,Escherichia,Escherichia,Enterobacteriaceae,Enterobacteriaceae,Enterobacterales,Enterobacterales,Gammaproteobacteria,Gammaproteobacteria,Pseudomonadota,Proteobacteria
-B.uniformis,Bacteroides uniformis,Bacteroides uniformis,Bacteroides uniformis,B. uniformis,Bacteroides,Bacteroides,Bacteroidaceae,Bacteroidaceae,Bacteroidales,Bacteroidales,Bacteroidia,Bacteroidia,Bacteroidota,Bacteroidetes
-,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,

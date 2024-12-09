@@ -14,7 +14,7 @@ def estimate_carbsforbacteria(total_carbon,fiber,sugar,fiberdigestion=0.75,starc
 #    hadzadiet["energyBE05"],fermc,hadzadiet['fermentationprodBE05'],fermg,fermg2,cc,order=energycalc(hadzadiet["carbLI05"],scenario='reference',calctype='from_carbs')
 #rewrite having only one output
 
-def energycalc_array(inputv,scenario='reference',calctype='none',dict_yielddata="data_analysisresults/average_excretion/av_YCA.json"):
+def energycalc_array(inputv,scenario='reference',calctype='none',dict_yielddata="example.json"):
     outputv_energy=inputv.copy()
     outputv_ferm=inputv.copy()
     for il in range(0,inputv.shape[0]):
@@ -27,7 +27,7 @@ def energycalc_array(inputv,scenario='reference',calctype='none',dict_yielddata=
 def cal_energy_FP(excretion,order):
     energyc=0
     enthalpy_sub=['glucose','maltose','acetate','butyrate','formate','lactate','propionate','succinate']
-    enthalpy=[0.68,1.36,0.21,0.52,0.,.33,0.37,0.36]
+    enthalpy=[0.68,1.36,0.21,0.52,0.,.33,0.37,0.36] 
     iS = -1
     #print(order)
     #print(excretion)
@@ -36,7 +36,52 @@ def cal_energy_FP(excretion,order):
         energyc=energyc+excretion[iS]*enthalpy[enthalpy_sub.index(sub)]
     return energyc
 
-def energycalc(inputv,scenario='reference',calctype='from_carbs',dict_yielddata="data_analysisresults/average_excretion/av_YCA.json"): #amount of carbohydrates reaching gut, in g/day; fraction of B.theta in population (assumes rest is E. rectale)
+#estimate amount of water produced, O2 consumed, CO2 released.
+
+def cal_CO2_o2(total_carbon,fiber,sugar,protein,fat,fiberdigestion=0.75,starchpassage=0.15,proteinpassage=0.07):
+
+    #input in grams
+    x
+    #estimate carbohydrates
+    MAC=fiberdigestion*fiber+starchpassage*(total_carbon-fiber-sugar)
+    nonMAC=total_carbon-MAC
+    carbohydrates_respiration=nonMAC #assume all CH not reaching large intestine get respirate
+    #fats
+    fat_respiration=fat #assume all fats are absorbed and respirated
+    #proteins
+    proteins_respiration=(1.-proteinpassage)*protein
+
+    #calculate oxygen consumption (in g)
+    o2_consumption=2.87*fat_respiration+1.42*proteins_respiration+1.0656*carbohydrates_respiration #double check, number for oxygen consumption for fat
+
+    #calculate oxygen
+    
+    #calculate water production (in g)
+    h2o_release=1.112*fat_respiration+0.45*proteins_respiration+0.60*carbohydrates_respiration
+    
+    #calculate CO2 production (in g)
+    co2_release=2.75*fat_respiration+1.74*proteins_respiration+1.465*carbohydrates_respiration
+
+    #urea production
+    urea_release=0.3*proteins_respiration
+
+    return [o2_consumption,h2o_release,co2_release,urea_release]
+    #carbohydrates
+    #Mass of CO₂ produced: 146.52 g
+	#Mass of H₂O produced: 59.99 g
+
+    #fats
+    #In summary, the complete oxidation of 100 g of fat (using palmitic acid as a representative) results in approximately 275 g of CO₂ and 112 g of water. Since fats primarily consist of carbon, hydrogen, and oxygen, they do not produce nitrogenous waste, unlike proteins.
+
+    #    So, the metabolism of 100 g of protein results in approximately 174 g of CO₂, 45 g of water, and 30 g of urea.
+    
+#function to transform fecal wet weight into dry weight
+#this is based on data points from many different studies (as derived below)
+#there is a correlation between dry and weg weight but the functional form is hard to estimate
+#here diferent fits are used ('calculationmodes')
+
+
+def energycalc(inputv,scenario='reference',calctype='from_carbs',dict_yielddata="example.json"): #amount of carbohydrates reaching gut, in g/day; fraction of B.theta in population (assumes rest is E. rectale)
     
     with open(os.path.join(dict_yielddata)) as f:
         yielddict = json.load(f)
