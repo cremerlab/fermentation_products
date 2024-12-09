@@ -1,22 +1,76 @@
 study_name,key
-HMP_2012,"HMPC, 2012 (Nature; PMID: 22699609)"
-LiJ_2014,"Li et al., 2014 (Nat. Biotechnol.; PMID: 24997786 )"
-NielsenHB_2014,"Nielsen et al., 2014 (Nat. Biotechnol.; PMID: 24997787)"
-ZellerG_2014,"Zeller et al., 2014 (Mol. Syst. Biol.; PMID: 25432777)"
-BackhedF_2015,"Bäckhed et al., 2014 (Cell Host Microbe; PMID: 25974306)"
-LifeLinesDeep_2016,"Zhernakova et al., 2016 (Science; PMID: 27126040)"
-PehrssonE_2016,"Pehrsson et al., 2016 (Nature; PMID: 27172044)"
-BritoIL_2016,"Brito et al., 2016 (Nature; PMID: 27409808)"
-JieZ_2017,"Jie et al., 2017 (Nat. Comm.; PMID: 29018189)"
-HallAB_2017,"Hall et al., 2017 (Genome Med.; PMID: 29183332)"
-HMP_2019_ibdmdb,"Schirmer et al., 2018 (Nat. Microbiol.; PMID: 29183332)"
+AsnicarF_2017,Asnicar et al. 2017 (mSystems; PMID: 28144631)
+AsnicarF_2021,Asnicar et al. 2021 (Nat Med; PMID: 33432175)
+BackhedF_2015,Bckhed et al. 2015 (Cell Host Microbe; PMID: 25974306)
+Bengtsson-PalmeJ_2015,Bengtsson-Palme et al. 2015 (Antimicrob Agents Chemother; PMID: 26259788)
+BritoIL_2016,Brito et al. 2016 (Nature; PMID: 27409808)
+BrooksB_2017,Brooks et al. 2017 (Nat Commun; PMID: 29180750)
+ChengpingW_2017,Wen et al. 2017 (Genome Biol; PMID: 28750650)
+ChuDM_2017,Chu et al. 2017 (Nat Med; PMID: 28112736)
+CosteaPI_2017,Costea et al. 2017 (Mol Syst Biol; PMID: 29242367)
+DavidLA_2015,David et al. 2015 (mBio; PMID: 25991682)
+DeFilippisF_2019,De_Filippis et al. 2019 (Cell Host Microbe; PMID: 30799264)
+DhakanDB_2019,Dhakan et al. 2019 (Gigascience; PMID: 30698687)
+FengQ_2015,Feng et al. 2015 (Nat Commun; PMID: 25758642)
+FerrettiP_2018,Ferretti et al. 2018 (Cell Host Microbe; PMID: 30001516)
+GopalakrishnanV_2018,Gopalakrishnan et al. 2018 (Science; PMID: 29097493)
+GuptaA_2019,Dhakan et al. 2019 (Gigascience; PMID: 30698687)
+HallAB_2017,Hall et al. 2017 (Genome Med; PMID: 29183332)
+HanniganGD_2017,Hannigan et al. 2018 (mBio; PMID: 30459201)
+HansenLBS_2018,Hansen et al. 2018 (Nat Commun; PMID: 30425247)
+Heitz-BuschartA_2016,Heintz-Buschart et al. 2016 (Nat Microbiol; PMID: 27723761)
+HMP_2012,Human_Microbiome_Project_Consortium et al. 2012 (Nature; PMID: 22699609)
+HMP_2019_ibdmdb,Schirmer et al. 2018 (Nat Microbiol; PMID: 29311644)
+HMP_2019_t2d,Zhou et al. 2019 (Nature; PMID: 31142858)
+IjazUZ_2017,Ijaz et al. 2017 (PLoS One; PMID: 28222161)
+JieZ_2017,Jie et al. 2017 (Nat Commun; PMID: 29018189)
+KarlssonFH_2013,Karlsson et al. 2013 (Nature; PMID: 23719380)
+KaurK_2020,Kaur et al. 2020 (PLoS One; PMID: 32267865)
+KeohaneDM_2020,Keohane et al. 2020 (Nat Med; PMID: 32632193)
+KieserS_2018,Kieser et al. 2018 (Environ Microbiol; PMID: 29786169)
+KosticAD_2015,Kostic et al. 2015 (Cell Host Microbe; PMID: 25662751)
+LeChatelierE_2013,Le_Chatelier et al. 2013 (Nature; PMID: 23985870)
+LifeLinesDeep_2016,Zhernakova et al. 2016 (Science; PMID: 27126040)
+LiJ_2014,Li et al. 2014 (Nat Biotechnol; PMID: 24997786)
+LiJ_2017,Li et al. 2017 (Microbiome; PMID: 28143587)
+LiSS_2016,Li et al. 2016 (Science; PMID: 27126044)
+LiuW_2016,Liu et al. 2016 (Sci Rep; PMID: 27708392)
+LokmerA_2019,Lokmer et al. 2019 (PLoS One; PMID: 30726303)
+LomanNJ_2013,Loman et al. 2013 (JAMA; PMID: 23571589)
+LoombaR_2017,Loomba et al. 2017 (Cell Metab; PMID: 28467925)
+LouisS_2016,Louis et al. 2016 (PLoS One; PMID: 26919743)
+MatsonV_2018,Matson et al. 2018 (Science; PMID: 29302014)
+MehtaRS_2018,Mehta et al. 2018 (Nat Microbiol; PMID: 29335554)
+NagySzakalD_2017,Nagy-Szakal et al. 2017 (Microbiome; PMID: 28441964)
+NielsenHB_2014,Nielsen et al. 2014 (Nat Biotechnol; PMID: 24997787)
+Obregon-TitoAJ_2015,Obregon-Tito et al. 2015 (Nat Commun; PMID: 25807110)
+OlmMR_2017,Olm et al. 2017 (Genome Res; PMID: 28073918)
+PasolliE_2019,Pasolli et al. 2019 (Cell; PMID: 30661755)
+PehrssonE_2016,Pehrsson et al. 2016 (Nature; PMID: 27172044)
+QinJ_2012,Qin et al. 2012 (Nature; PMID: 23023125)
+QinN_2014,Qin et al. 2014 (Nature; PMID: 25079328)
+RampelliS_2015,Rampelli et al. 2015 (Curr Biol; PMID: 25981789)
+RaymondF_2016,Raymond et al. 2016 (ISME J; PMID: 26359913)
+RosaBA_2018,Rosa et al. 2018 (Microbiome; PMID: 29486796)
+RubelMA_2020,Rubel et al. 2020 (Genome Biol; PMID: 32450885)
+SankaranarayananK_2015,Sankaranarayanan et al. 2015 (Curr Biol; PMID: 26671671)
+SchirmerM_2016,Schirmer et al. 2016 (Cell; PMID: 27984736)
+ShaoY_2019,Shao et al. 2019 (Nature; PMID: 31534227)
+SmitsSA_2017,Smits et al. 2017 (Science; PMID: 28839072)
+TettAJ_2019,Tett et al. 2019 (Cell Host Microbe; PMID: 31607556)
+ThomasAM_2019,Thomas et al. 2019 (Nat Med; PMID: 30936548)
+VatanenT_2016,Vatanen et al. 2016 (Cell; PMID: 27133167)
+VilaAV_2018,Vich et al. 2018 (Sci Transl Med; PMID: 30567928)
+VincentC_2016,Vincent et al. 2016 (Microbiome; PMID: 26975510)
+VogtmannE_2016,Vogtmann et al. 2016 (PLoS One; PMID: 27171425)
+WampachL_2018,Wampach et al. 2018 (Nat Commun; PMID: 30504906)
+WirbelJ_2018,Wirbel et al. 2019 (Nat Med; PMID: 30936547)
+XieH_2016,Xie et al. 2016 (Cell Syst; PMID: 27818083)
+YachidaS_2019,Yachida et al. 2019 (Nat Med; PMID: 31171880)
+YassourM_2016,Yassour et al. 2016 (Genome Med; PMID: 26884067)
 YassourM_2018,Yassour et al. 2018 (Cell Host Microbe; PMID: 30001517)
-VilaAV_2018,"Vich Vila et al., 2018 (Sci. Transl. Med.; PMID: 30567928)"
-PasolliE_2019,"Pasolli et al., 2019 (Cell; PMID: 30661755)"
-WirbelJ_2018,"Wirbel et al., 2019 (Nat. Med.; PMID: 30661755)"
-HMP_2019_t2d,"Zhou et al., 2019 (Nature; PMID: 31142858)"
-YachidaS_2019,"Yachida et al., 2019 (Nat. Med.; PMID: 31171880)"
-ShaoY_2019,"Shao et al., 2019 (Nature; PMID: 31534227)"
-TettAJ_2019,"Tett et al., 2019 (Cell Host Microbe; PMID: 31607556 )"
-RubelMA_2020,"Rubel et al., 2020 (Genome Biol.; PMID: 32450885)"
-AsnicarF_2021,Asnicar et al. 2021 (Nat. Med.; PMID: 33432175)
+YeZ_2018,Ye et al. 2018 (Microbiome; PMID: 30077182)
+YuJ_2015,Yu et al. 2017 (Gut; PMID: 26408641)
+ZeeviD_2015,Zeevi et al. 2015 (Cell; PMID: 26590418)
+ZellerG_2014,Zeller et al. 2014 (Mol Syst Biol; PMID: 25432777)
+ZhuF_2020,Zhu et al. 2020 (Nat Commun; PMID: 32235826)
