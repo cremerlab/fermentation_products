@@ -10,3 +10,14 @@ The HPLC raw data is provided in the folder chromatogram_raw_data, with one text
 # HPLC analysis
 
 To analyze the chromatograms and extract concentration values, we utilized the Python pipeline hplc-py (Chure et al, https://doi.org/10.21105/joss.06270)  we had developed for this purpose. This pipeline allows for the efficient fitting of Gaussian peaks to chromatograms, dealing with overlaps of peaks. We recommend following the documentation provided on https://github.com/cremerlab/hplc-py to utilize this pipeline. The scripts we provide here are an extension to run this pipelines for all chromatography samples from one growth curve and analyze observed trends. We  provide an example analysis of this approach in the folder hplc_analysis_example. This includes also the integration of calibration curves. Finally, we also provide in the folder data_calibrationthe chromatograms and their analysis used for calibration. 
+
+# Illustration of HPLC results
+
+To facilitate the comparative analysis of different species, we provide plots illustrating the trends in optical density, sugar, and fermentation product abundances for each analyzed culture over time. We provide one pdf per media condition probed (YCA, BHIS, epsilon, gamma). The following plots are provided in the folder plots_hplc_results:
+
+1. HPLC_trends_YCA.pdf
+2. HPLC_trends_BHIS.pdf
+3. HPLC_trends_epsilon.pdf
+4. HPLC_trends_gamma.pdf
+
+
