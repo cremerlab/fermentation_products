@@ -4,21 +4,22 @@
 This repository contains all data and code (analysis and illustrations) used in our study "Quantifying the daily fermentation product harvest from the human gut microbiota." 
 Markus Arnoldini, Richa Sharma, Claudia Moresi, Griffin Chure, Julien Chabbey, Emma Slack, and Jonas Cremer
 
-Jonas Cremer, Griffin Chure, Markus Arnoldini
+Jonas Cremer, Griffin Chure, and Markus Arnoldini
+
 June 2025, Palo Alto
 
 
 ## Directory Structure
-This repository is divided into three major folders, each of which is described below. 
+This repository contains three major folders, each of which is described below. 
 
 ### `analysis`
-This folder contains all the Python code used to analyze and illustrate variations in fermentation product excretion and harvest. Different Jupyter files contain different analysis parts. Refer to the README file in the folder for additional information.
+This folder contains all the Python code used to analyze and illustrate variations in fermentation product excretion and harvest. Different Jupyter files contain different analysis parts. See the README file in the folder for additional information.
 
 ### `hplc_measurements`
-This folder contains the raw experimental data from our cultivation and HPLC measurements. The analysis code to extract growth rates, carbohydrate uptake, and excretion rates from measurements is also included. Plots summarizing all cultures are also available here. Refer to the README file in the folder for additional information.
+This folder contains the raw experimental data from our cultivation and HPLC measurements. The analysis code to extract growth rates, carbohydrate uptake, and excretion rates from measurements is also included. Plots summarizing all cultures are also available here. See the README file in the folder for additional information.
 
 ### `interactives`
-This folder contains all the Python and JavaScript code needed to generate the interactive figure. The website to show this figure is hosted on a separate branch and accessible via https://github.com/cremerlab/microbiome-fermentation-products .
+This folder contains all the Python and JavaScript code needed to generate the interactive figure. The website to show this figure is hosted on a separate branch (gh-phages) and accessible via https://github.com/cremerlab/microbiome-fermentation-products .
 
 ### License
 
