@@ -19,7 +19,9 @@ This folder contains all the Python code used to analyze and illustrate variatio
 This folder contains the raw experimental data from our cultivation and HPLC measurements. The analysis code to extract growth rates, carbohydrate uptake, and excretion rates from measurements is also included. Plots summarizing all cultures are also available here. See the README file in the folder for additional information.
 
 ### `interactives`
-This folder contains all the Python and JavaScript code needed to generate the interactive figure. The website to show this figure is hosted on a separate branch (gh-phages) and accessible via https://github.com/cremerlab/microbiome-fermentation-products .
+This folder contains all the Python and JavaScript code needed to generate the interactive figure. The website to show this figure is hosted on a separate branch (gh-phages) and accessible https://cremerlab.github.io/fermentation_products/ .
+
+
 
 ### License
 
